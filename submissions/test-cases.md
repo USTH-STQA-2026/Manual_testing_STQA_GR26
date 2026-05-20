@@ -82,8 +82,6 @@
 
 ## Bước 2: Test Cases
 
-## Bước 2: Test Cases
-
 | Mã TC | Mục tiêu kiểm thử | Tiền điều kiện | Bước thực hiện | Dữ liệu đầu vào | Kết quả mong đợi | REQ | Kỹ thuật |
 |---|---|---|---|---|---|---|---|
 | TC-01 | Đăng nhập thành công với quyền Thủ thư | Trang đăng nhập đã hiển thị | 1. Nhập Email hợp lệ của Thủ thư.<br>2. Nhập Mật khẩu chính xác.<br>3. Nhấn nút Đăng nhập. | Email: [librarian@library.com]<br>Mật khẩu: [admin123] | Đăng nhập thành công. Hệ thống chuyển hướng vào trang quản trị và hiển thị đầy đủ các Tab chức năng. | REQ-01 | EP |
