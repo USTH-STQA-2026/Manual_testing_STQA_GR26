@@ -54,27 +54,27 @@
 | Số sách đang mượn? | < 3 (BVA: 0, 1, 2) | MEM006 (0 sách) | Cho phép mượn |
 | | = 3 (BVA: giới hạn) | MEM đã mượn 3 sách | Từ chối, thông báo vượt giới hạn |
 
-### IDM — Quản lý Trả sách & Xử lý Quá hạn (REQ-05, REQ-06)
+### IDM — Quy trình Trả sách & Xử lý Quá hạn (REQ-05, REQ-06)
 
 | Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
 |---|---|---|---|
-| Thời gian trả sách (REQ-05) | Đúng hạn | Phiếu mượn chưa tới hạn | Sách chuyển về màu xanh "Có sẵn", đóng phiếu thành công |
-| | Quá hạn | Phiếu mượn trễ hạn | Sách về "Có sẵn", hệ thống phải hiển thị cảnh báo quá hạn |
-| Quy tắc quét trạng thái (REQ-06) | Phiếu có dueDate <= ngày hiện tại | Bấm nút "Kiểm tra quá hạn" | Hệ thống tự động đánh dấu và đổi nhãn phiếu sang "Quá hạn" |
-| Quyền hiển thị phiếu quá hạn (REQ-06) | Vai trò là Thủ thư | Tài khoản Thủ thư | Xem được tất cả các phiếu quá hạn của mọi người |
-| | Vai trò là Thành viên | Tài khoản Độc giả | Chỉ nhìn thấy phiếu quá hạn của chính mình |
+| Hạn trả thực tế (REQ-05) | Đúng hạn (Ngày trả $\le$ Hạn trả) | Phiếu mượn còn hạn | Sách chuyển về trạng thái "Có sẵn", hệ thống đóng phiếu mượn. |
+| | Quá hạn (Ngày trả $>$ Hạn trả) | Phiếu mượn trễ hạn | Sách về trạng thái "Có sẵn", hệ thống đưa ra cảnh báo vi phạm quá hạn. |
+| Cơ chế quét dữ liệu (REQ-06) | Tồn tại phiếu có Ngày hết hạn $\le$ Ngày hiện tại | Kích hoạt nút "Kiểm tra quá hạn" | Tự động chuyển đổi trạng thái các phiếu mượn hết hạn sang "Quá hạn". |
+| Phân quyền xem phiếu quá hạn (REQ-06) | Vai trò Thủ thư | `librarian@library.com` | Hiển thị toàn bộ danh sách các phiếu mượn quá hạn trong hệ thống. |
+| | Vai trò Thành viên | `ba.nguyen@email.com` | Chỉ hiển thị các phiếu quá hạn thuộc sở hữu của chính độc giả đó. |
 
 ### IDM — Quản lý Thành viên & Tra cứu Phiếu mượn (REQ-07, REQ-08)
 
 | Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
 |---|---|---|---|
-| Xác thực cấu trúc Email mới (REQ-07) | Hợp lệ | quang26@gmail.com | Chắp nhận form, cho phép tạo thành viên |
-| | Sai định dạng | quang@gmail | Hệ thống từ chối, báo lỗi định dạng email tại form |
-| Kiểm tra trùng lập Email (REQ-07) | Email chưa tồn tại | newuser@gmail.com | Tạo thành viên mới thành công |
-| | Email đã tồn tại sẵn | ba.nguyen@email.com | Chặn lại, hiển thị thông báo "Email đã tồn tại" |
-| Quyền tra cứu phiếu mượn (REQ-08) | Vai trò là Thủ thư | Tài khoản Thủ thư | Tìm kiếm và xem được tất cả phiếu mượn của mọi người |
-| | Vai trò là Thành viên (Đúng chủ) | Tài khoản Học Bá | Hiển thị đầy đủ thông tin mã phiếu, ngày mượn của mình |
-| | Vai trò là Thành viên (Sai chủ) | Tra phiếu người khác | Hệ thống chặn lại, tuyệt đối không cho xem |
+| Định dạng Email mới (REQ-07) | Cấu trúc hợp lệ | `quang26@gmail.com` | Hệ thống phê duyệt form, tạo tài khoản thành công. |
+| | Sai định dạng email | `quang@gmail` | Hệ thống báo lỗi định dạng ngay tại trường nhập (Validation error). |
+| Trạng thái Email trong DB (REQ-07) | Chưa tồn tại | `newuser@gmail.com` | Khởi tạo thành viên mới thành công. |
+| | Đã tồn tại | `ba.nguyen@email.com` | Hệ thống từ chối lưu, hiển thị thông báo trùng lặp dữ liệu. |
+| Thao tác tra cứu bản ghi (REQ-08) | Quyền Thủ thư | `librarian@library.com` | Xem được chi tiết toàn bộ phiếu mượn của mọi thành viên. |
+| | Quyền Thành viên (Truy cập bản ghi cá nhân) | `ba.nguyen@email.com` | Hiển thị chi tiết bản ghi mượn sách của bản thân. |
+| | Quyền Thành viên (Truy cập bản ghi người khác) | Truy cập ID phiếu `BR002` | Hệ thống từ chối truy cập, hiển thị thông báo lỗi phân quyền. |
 
 > 💡 **Gợi ý kỹ thuật**: Sử dụng **Phân lớp tương đương (EP)** cho các phân vùng rời rạc, **Phân tích giá trị biên (BVA)** cho các phân vùng số (ví dụ: giới hạn 3 sách). Xem textbook §6.1–6.3.
 
