@@ -253,7 +253,7 @@ Check whether the overdue warning has been implemented and whether the display c
 
 **Evidence:**
 
-![Alt text](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/librarian_creating_account.PNG)
+![Alt text](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/invalid_gmail.PNG)
 
 **Suggested fix:**
 `Add/check the validation function to block and report the error immediately in the Email field.`
