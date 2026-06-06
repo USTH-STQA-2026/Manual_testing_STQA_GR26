@@ -132,7 +132,7 @@ Developers need to normalize both the user input string and the book category at
 - Affects user experience (UX).
 
 **Evidence:**
-<img width="2008" height="1160" alt="REQ-04_TC-04_01" src="https://github.com/user-attachments/assets/c67c1c48-f7b2-42d5-b973-44dd0965cf9c" />
+<img width="2008" height="1160" alt="REQ-04_TC-04_01" src="https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/not_expired.PNG" />
 
 **Suggested fix:**
 Review the branching logic structure and separate the condition clauses for member status checks.
@@ -253,7 +253,7 @@ Check whether the overdue warning has been implemented and whether the display c
 
 **Evidence:**
 
-![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/REQ-07_TC04.png)
+![Alt text](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/librarian_creating_account.PNG)
 
 **Suggested fix:**
 `Add/check the validation function to block and report the error immediately in the Email field.`
@@ -290,7 +290,7 @@ The system reports invalid email
 The add-member function completely loses its core workflow
 
 **Evidence:**
-![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/REQ-07_TC05.png)
+![Alt text](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/valid_information.PNG)
 
 **Suggested fix:**
 Quickly review the API logic in the "Add member" module so the system accepts valid information and saves the member successfully
@@ -330,7 +330,7 @@ BR003 (**Quản trị nhân sự hiện đại**, borrowed by `biet.hoang` / MEM
 Serious privacy and access control violation. Any Member can freely look up and read another member's borrowing history simply by knowing (or guessing) their Member ID. In a real-world deployment, this would constitute a data protection breach.
 
 **Evidence:**
-![AltText](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/An10.png)
+![AltText](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/show_other_ticket.PNG)
 
 **Suggested Fix:**
 When a Member submits a lookup query, the backend/controller must validate that the searched Member ID matches the currently logged-in user's ID. If it does not match, the system must return an empty result set or an access-denied message. This filter should be enforced server-side (or in the state management layer), not only on the UI.
@@ -371,7 +371,7 @@ The system allows the member (MEM002) to return the other member' (MEM006) book
 Access control violation. Any member can freely return another member' books simply by knowing (or guessing) their Member ID. This might mess with the management of books and create inconveniences for other members.
 
 **Evidence:**
-![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/579ecc6927b0d1df912e0e52bf5ca13737203985/screenshots/REQ-05_trasachthanhvienkhac.png)
+![Alt text](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/back_other_book.PNG)
 
 **Suggested Fix:**
 When a Member submits a lookup query, the backend/controller must validate that the searched Member ID matches the currently logged-in user's ID. If it still shows the other members' borrowing slips, the "Return book" button must not appear or it must not be able to return correctly and display an access-denied message.
