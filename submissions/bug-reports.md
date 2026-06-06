@@ -95,7 +95,7 @@ This ruins UX. Users typing in lowercase will assume the system is empty or brok
 **Evidence:**
 
 
-<img width="1937" height="1159" alt="image" src="hhttps://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/lowercase_filter_error.PNG" />
+<img width="1937" height="1159" alt="image" src="https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/lowercase_filter_error.PNG" />
 
 
 **Suggested fix:**
