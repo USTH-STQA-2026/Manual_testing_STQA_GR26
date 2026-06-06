@@ -6,17 +6,17 @@
 
 | Thông tin | |
 |---|---|
-| **Nhóm** | `STQA_Group_01` |
+| **Nhóm** | `STQA_Group_26` |
 | **Ngày báo cáo** | `23/05/2026` |
 
 **Environment:**
-- Browser: Firefox, Google Chrome
-- Operating system: Linux, Windows, macOS 
+- Browser: Edge, Chrome
+- Operating system: Windows
 - Interface language: Vietnamese
 
 ---
 
-## BUG-01: The system accepts an invalid email format in the login function
+## BUG-01: System accepts an invalid email format in the login
 
 | Attribute | Details |
 |-----------|---------|
@@ -24,37 +24,33 @@
 | **Related TC** | TC-04 |
 | **Related REQ** | REQ-01 |
 | **Severity** | Medium |
-| **Reported by** | Nguyễn Anh Tuấn |
+| **Reported by** | Nguyễn Tiến Dũng, Nguyễn Huy Quang |
 | **Date found** | `17/05/2026` |
 | **Status** | Open |
 
 **Preconditions:**
-- A member account has already been created in the system with an invalid email format: example@email
+- A member account has already been created in the system with an invalid email format: abc@email
 - The user is on the login screen
 
 **Steps to reproduce:**
 1. Open the system login page.
-2. Enter email: example@email
+2. Enter email: abc@email
 3. Enter the correct password for the account.
 4. Click the Login button.
 
 **Expected result:**
 The system must reject the invalid email format according to the rule: `email@domain.ext`  
-Display a suitable error message and do not allow login.
+Display a error notification and not allow to login.
 
 **Actual result:**
-The system accepts the email `example@email` and allows successful login to the system.
+The system accepts the email `abc@email` and allows successful login to the system.
 
 **Impact:**
-The system allows invalid email data to exist and be used during authentication. This may reduce data integrity, cause errors in later features that use email, and create inconsistencies with the system SRS.
+The website doesn't validate email formats during login, which messes with data accuracy, breaks downstream features, and violates the SRS.
 
 **Evidence:**
-1. The account with an invalid email format is created by the librarian
+1. The account with an invalid email format is created by the librarian and can be login successfully.
 ![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/librarian_creating_account.png)
-2. Log in with that account on the login page
-![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/login_with_invalid_email_form.png)
-3. The system allows login normally
-![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/successful_login.png)
 
 **Suggested fix:**
 Add email format validation in:
@@ -66,7 +62,7 @@ Only accept emails in the correct format: `email@domain.ext`
 ---
 ---
 
-## BUG-02: The category filtering feature is case-sensitive and returns no results when lowercase text is entered
+## BUG-02: The category filter is case-sensitive, returning zero results for lowercase inputs.
 
 | Attribute | Details |
 |-----------|---------|
@@ -74,7 +70,7 @@ Only accept emails in the correct format: `email@domain.ext`
 | **Related TC** | `TC-11` |
 | **Related REQ** | `REQ-03` |
 | **Severity** | `Medium` |
-| **Reported by** | `Vũ Trần Nam Khánh` |
+| **Reported by** | `Nguyễn Phan Hồng Anh` |
 | **Date found** | `17/05/2026` |
 | **Status** | `Open` |
 
@@ -84,7 +80,7 @@ Successfully logged in to the system and currently in the "Books" tab.
 **Steps to reproduce:**
 1. Click on the input bar: "Filter by category (e.g. Technology, Economy...)"
 2. Enter the all-lowercase string: `"công nghệ"`.
-3. Press Enter or click outside the blank area so the system applies the filter.
+3. Press Enter to apply the filter.
 4. Observe the list of books displayed on the UI.
 
 **Expected result:**
@@ -94,7 +90,7 @@ The system must process the input in a case-insensitive manner, recognize the ca
 The system processes the filter in a case-sensitive manner. The entire book list disappears from the screen, and the interface shows the error message: `'No books found'`. The filter only works when the user types the exact uppercase form `"Công nghệ"`.
 
 **Impact:**
-This negatively affects the user experience (UX). Users who naturally type in lowercase may think the system has no books or that the filtering feature is broken, even though the data actually exists in the system.
+This ruins UX. Users typing in lowercase will assume the system is empty or broken, even though the books exist.
 
 **Evidence:**
 
@@ -113,7 +109,7 @@ Developers need to normalize both the user input string and the book category at
 | **Related TC** | `TC-12` |
 | **Related REQ** | `REQ-04` |
 | **Severity** | `Medium` |
-| **Reported by** | `Nguyễn Xuân Dương và Vũ Trần Nam Khánh` |
+| **Reported by** | `Nguyễn Tiến Dũng, Nguyễn Huy Quang` |
 | **Date found** | `18/05/2026` |
 | **Status** | `Open` |
 
@@ -151,7 +147,7 @@ Review the branching logic structure and separate the condition clauses for memb
 | **Related TC** | `TC-16` |
 | **Related REQ** | `REQ-04` |
 | **Severity** | `High` |
-| **Reported by** | `Nguyễn Xuân Dương và Vũ Trần Nam Khánh` |
+| **Reported by** | `Nguyễn Tiến Dũng, Nguyễn Huy Quang` |
 | **Date found** | `18/05/2026` |
 | **Status** | `Open` |
 
@@ -173,12 +169,8 @@ Review the branching logic structure and separate the condition clauses for memb
 - Violates the business requirement.
 
 **Evidence:**
-- Borrowed 3 books:
+- Borrowed 4 books:
 <img width="2008" height="1160" alt="REQ-04_TC-08_07" src="https://github.com/user-attachments/assets/3ad3e644-12b8-4d97-b215-76a48c92b240" />
-
-- The system still allows borrowing the 4th book:
-
-<img width="2008" height="1160" alt="REQ-04_TC-08_09" src="https://github.com/user-attachments/assets/74370bd9-6da7-460e-bdd6-aabb54b48e41" />
 
 <img width="2008" height="1160" alt="REQ-04_TC-08_10" src="https://github.com/user-attachments/assets/afad257d-63c4-4d35-9e5c-3cfa9a4c1be9" />
 
@@ -187,7 +179,7 @@ Review the branching logic structure and separate the condition clauses for memb
 <img width="2008" height="1160" alt="REQ-04_TC-08_11" src="https://github.com/user-attachments/assets/5c2bc594-3184-4755-8c38-d790eff7c7e1" />
 
 **Suggested fix:**
-Adjust the `borrow_count` logic condition from `<=3` to `<3`.
+The 3-book limit is broken; users can currently borrow 4 books before getting an error. Please fix the logic condition from <= 3 to < 3.
 
 ---
 
@@ -199,14 +191,10 @@ Adjust the `borrow_count` logic condition from `<=3` to `<3`.
 | **Related TC** | `TC-19` |
 | **Related REQ** | `REQ-05` |
 | **Severity** | `Medium` |
-| **Reported by** | `Nguyễn Xuân Dương` |
+| **Reported by** | `Nguyễn Phan Hồng Anh` |
 | **Date found** | `18/05/2026` |
 | **Status** | `Open` |
 
-**Environment:**
-- Browser: Firefox
-- Operating system: `Windows`
-- Interface language: Vietnamese
 
 **Preconditions:**
 `Member has a borrowing slip initially in "Borrowed" status and overdue; overdue book is in "Borrowed" status`
@@ -242,7 +230,7 @@ Check whether the overdue warning has been implemented and whether the display c
 | **Related TC** | `TC-32` |
 | **Related REQ** | `REQ-07` |
 | **Severity** | `Medium` |
-| **Reported by** | `Cao Chí Bảo` |
+| **Reported by** | `Nguyễn Phan Hồng Anh` |
 | **Date found** | `19/05/2026` |
 | **Status** | `Open` |
 
@@ -272,7 +260,7 @@ Check whether the overdue warning has been implemented and whether the display c
 
 ---
 
-## BUG-07: The system does not allow adding a member even with complete and valid information
+## BUG-07: The system not allow to adding a member although with valid information
 
 | Attribute | Details |
 |-----------|---------|
@@ -280,7 +268,7 @@ Check whether the overdue warning has been implemented and whether the display c
 | **Related TC** | TC-33 |
 | **Related REQ** | REQ-07 |
 | **Severity** | High |
-| **Reported by** | Cao Chí Bảo |
+| **Reported by** | Nguyễn Phan Hồng Anh |
 | **Date found** | `19/05/2026` |
 | **Status** | Open |
 
@@ -317,7 +305,7 @@ Quickly review the API logic in the "Add member" module so the system accepts va
 | **Related TC** | TC-36 |
 | **Related REQ** | REQ-08 |
 | **Severity** | High |
-| **Discovered by** | Huỳnh Gia An |
+| **Discovered by** | Nguyễn Tiến Dũng, Nguyễn Huy Quang, Nguyễn Phan Hồng Anh |
 | **Date discovered** | 20/05/2026 |
 | **Status** | Open |
 
@@ -358,7 +346,7 @@ When a Member submits a lookup query, the backend/controller must validate that 
 | **Related TC** | TC-21 |
 | **Related REQ** | REQ-05 |
 | **Severity** | High |
-| **Discovered by** | Nguyễn Xuân Dương |
+| **Discovered by** | Nguyễn Tiến Dũng, Nguyễn Huy Quang, Nguyễn Phan Hồng Anh |
 | **Date discovered** | 27/05/2026 |
 | **Status** | Open |
 
