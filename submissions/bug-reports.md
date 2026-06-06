@@ -50,7 +50,7 @@ The website doesn't validate email formats during login, which messes with data 
 
 **Evidence:**
 1. The account with an invalid email format is created by the librarian and can be login successfully.
-![Alt text](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_01/blob/main/screenshots/librarian_creating_account.png)
+![Alt text](https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/librarian_creating_account.PNG)
 
 **Suggested fix:**
 Add email format validation in:
@@ -95,7 +95,7 @@ This ruins UX. Users typing in lowercase will assume the system is empty or brok
 **Evidence:**
 
 
-<img width="1937" height="1159" alt="image" src="https://github.com/user-attachments/assets/1c38bd8d-9068-4e42-a239-0ae97d1a3b35" />
+<img width="1937" height="1159" alt="image" src="hhttps://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/lowercase_filter_error.PNG" />
 
 
 **Suggested fix:**
@@ -170,13 +170,13 @@ Review the branching logic structure and separate the condition clauses for memb
 
 **Evidence:**
 - Borrowed 4 books:
-<img width="2008" height="1160" alt="REQ-04_TC-08_07" src="https://github.com/user-attachments/assets/3ad3e644-12b8-4d97-b215-76a48c92b240" />
+<img width="2008" height="1160" alt="REQ-04_TC-08_07" src="https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/book_limit1.PNG" />
 
-<img width="2008" height="1160" alt="REQ-04_TC-08_10" src="https://github.com/user-attachments/assets/afad257d-63c4-4d35-9e5c-3cfa9a4c1be9" />
+<img width="2008" height="1160" alt="REQ-04_TC-08_10" src="https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/book_limit2.PNG" />
 
 - And the system reports an error when borrowing the 5th book:
 
-<img width="2008" height="1160" alt="REQ-04_TC-08_11" src="https://github.com/user-attachments/assets/5c2bc594-3184-4755-8c38-d790eff7c7e1" />
+<img width="2008" height="1160" alt="REQ-04_TC-08_11" src="https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/book_limit_notification.PNG" />
 
 **Suggested fix:**
 The 3-book limit is broken; users can currently borrow 4 books before getting an error. Please fix the logic condition from <= 3 to < 3.
@@ -215,7 +215,7 @@ The 3-book limit is broken; users can currently borrow 4 books before getting an
 
 **Evidence**
 
-<img width="1912" height="815" alt="REQ-05_baoquahan" src="https://github.com/user-attachments/assets/cbce76bc-3f7f-4c07-92a3-250f8b8cd726" />
+<img width="1912" height="815" alt="REQ-05_baoquahan" src="https://github.com/USTH-STQA-2026/Manual_testing_STQA_GR26/blob/main/screenshots/overdue_date_book.PNG" />
 
 **Suggested fix:**
 Check whether the overdue warning has been implemented and whether the display condition for the warning is correct.
